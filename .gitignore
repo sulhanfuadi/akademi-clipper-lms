@@ -40,3 +40,45 @@ yarn-error.log*
 **/*.log
 package-lock.json
 **/*.bun
+/src/generated/prisma
+
+# prisma
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# akademi-clipper-lms specific
+/akademi-clipper-lms/.env
+/akademi-clipper-lms/.next/
+/akademi-clipper-lms/out/
+/akademi-clipper-lms/build
+/akademi-clipper-lms/node_modules
+/akademi-clipper-lms/prisma/dev.db
+/akademi-clipper-lms/prisma/dev.db-journal
+/akademi-clipper-lms/src/generated/prisma
+
+# ignore root
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+/.next/
+/out/
+/build
+/node_modules
+/prisma/dev.db
+/prisma/dev.db-journal
+/src/generated/prisma 
+/package-lock.json
+**/*.trace
+**/*.zip
+**/*.tar.gz
+**/*.tgz
+**/*.log
+**/*.bun
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 
+.DS_Store
+*.pem
+/.vercel
