@@ -1,6 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../src/lib/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
+
+const prisma = new PrismaClient({ adapter } as any);
 
 async function main() {
   console.log("Starting database seeding...");
@@ -16,7 +21,10 @@ async function main() {
   const admin = await prisma.user.create({
     data: {
       email: "admin@clipper.com",
-      password: await Bun.password.hash("admin123"),
+      password: await Bun.password.hash("admin123", {
+        algorithm: "bcrypt",
+        cost: 10,
+      }),
       name: "Admin Clipper",
       role: "ADMIN",
     },
@@ -29,7 +37,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "ridwan.hanif@clipper.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Ridwan Hanif",
         role: "INSTRUCTOR",
       },
@@ -37,7 +48,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "sarah.kusuma@clipper.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Sarah Kusuma",
         role: "INSTRUCTOR",
       },
@@ -45,7 +59,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "agung.pratama@clipper.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Agung Pratama",
         role: "INSTRUCTOR",
       },
@@ -53,7 +70,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "dinda.maharani@clipper.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Dinda Maharani",
         role: "INSTRUCTOR",
       },
@@ -61,7 +81,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "fajar.ramadhan@clipper.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Fajar Ramadhan",
         role: "INSTRUCTOR",
       },
@@ -75,7 +98,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "andi.wijaya@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Andi Wijaya",
         role: "STUDENT",
       },
@@ -83,7 +109,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "bella.putri@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Bella Putri",
         role: "STUDENT",
       },
@@ -91,7 +120,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "charlie.santoso@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Charlie Santoso",
         role: "STUDENT",
       },
@@ -99,7 +131,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "diana.lestari@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Diana Lestari",
         role: "STUDENT",
       },
@@ -107,7 +142,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "eko.prasetyo@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Eko Prasetyo",
         role: "STUDENT",
       },
@@ -115,7 +153,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "fani.aulia@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Fani Aulia",
         role: "STUDENT",
       },
@@ -123,7 +164,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "galih.mahendra@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Galih Mahendra",
         role: "STUDENT",
       },
@@ -131,7 +175,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "hana.safira@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Hana Safira",
         role: "STUDENT",
       },
@@ -139,7 +186,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "irfan.hakim@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Irfan Hakim",
         role: "STUDENT",
       },
@@ -147,7 +197,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "jessica.tan@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Jessica Tan",
         role: "STUDENT",
       },
@@ -155,7 +208,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "kevin.anggara@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Kevin Anggara",
         role: "STUDENT",
       },
@@ -163,7 +219,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "luna.puspita@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Luna Puspita",
         role: "STUDENT",
       },
@@ -171,7 +230,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "marco.wijaya@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Marco Wijaya",
         role: "STUDENT",
       },
@@ -179,7 +241,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "nadia.kartika@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Nadia Kartika",
         role: "STUDENT",
       },
@@ -187,7 +252,10 @@ async function main() {
     prisma.user.create({
       data: {
         email: "oscar.firmansyah@student.com",
-        password: await Bun.password.hash("password123"),
+        password: await Bun.password.hash("password123", {
+          algorithm: "bcrypt",
+          cost: 10,
+        }),
         name: "Oscar Firmansyah",
         role: "STUDENT",
       },
