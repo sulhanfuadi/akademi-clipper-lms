@@ -1,42 +1,38 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../src/lib/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-enum Role {
-  STUDENT
-  INSTRUCTOR
-  ADMIN
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String?
-  role      Role     @default(STUDENT)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id             Int          @id @default(autoincrement())
+  email          String       @unique
+  password       String
+  name           String
+  role           Role         @default(STUDENT)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
   createdCourses Course[]     @relation("InstructorCourses")
   enrollments    Enrollment[]
+
+  @@map("users")
 }
 
 model Course {
-  id           Int      @id @default(autoincrement())
+  id           Int          @id @default(autoincrement())
   title        String
-  description  String?
-  price        Float
+  description  String
+  price        Int
   instructorId Int
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  instructor   User         @relation("InstructorCourses", fields: [instructorId], references: [id])
+  enrollments  Enrollment[]
 
-  instructor  User         @relation("InstructorCourses", fields: [instructorId], references: [id])
-  enrollments Enrollment[]
+  @@map("courses")
 }
 
 model Enrollment {
@@ -44,9 +40,15 @@ model Enrollment {
   userId     Int
   courseId   Int
   enrolledAt DateTime @default(now())
-
-  user   User   @relation(fields: [userId], references: [id])
-  course Course @relation(fields: [courseId], references: [id])
+  course     Course   @relation(fields: [courseId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
 
   @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
 }
