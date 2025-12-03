@@ -48,7 +48,7 @@ const app = new Elysia()
     })
   )
   .use(authRoutes)
-  .use(userRoutes) // Pastikan ini ada
+  .use(userRoutes)
   .use(courseRoutes)
   .use(enrollmentRoutes)
   .get(
@@ -68,7 +68,12 @@ const app = new Elysia()
   )
   .listen(3000);
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
-console.log(`📚 Swagger documentation: http://localhost:3000/swagger`);
+// VERCEL DEPLOYMENT: Export default
+export default app;
+
+// LOCAL DEVELOPMENT:
+// if (import.meta.env.DEV) {
+//   app.listen(3000);
+//   console.log(`🦊 Elysia is running at localhost:3000`);
+//   console.log(`📚 Swagger documentation: http://localhost:3000/swagger`);
+// }
