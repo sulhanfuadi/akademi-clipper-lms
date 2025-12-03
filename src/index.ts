@@ -65,15 +65,12 @@ const app = new Elysia()
         description: "Get API information and documentation link",
       },
     }
-  )
-  .listen(3000);
+  );
 
-// VERCEL DEPLOYMENT: Export default
+// LOCAL DEV: Export FIRST (NO .listen before this!)
 export default app;
 
-// LOCAL DEVELOPMENT:
-// if (import.meta.env.DEV) {
-//   app.listen(3000);
-//   console.log(`🦊 Elysia is running at localhost:3000`);
-//   console.log(`📚 Swagger documentation: http://localhost:3000/swagger`);
-// }
+// LOCAL DEV: Uncomment for development
+// app.listen(3000);
+// console.log(`🦊 Elysia is running at localhost:3000`);
+// console.log(`📚 Swagger documentation: http://localhost:3000/swagger`);
