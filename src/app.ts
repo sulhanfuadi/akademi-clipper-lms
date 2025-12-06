@@ -66,3 +66,6 @@ export const app = new Elysia()
       },
     }
   );
+
+// Export default untuk Vercel
+export default app;

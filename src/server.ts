@@ -1,4 +1,4 @@
-import { app } from "./config";
+import { app } from "./app";
 
 const port = process.env.PORT ?? 3000;
 const displayPort = process.env.HOST_PORT ?? port; // Untuk display di log
