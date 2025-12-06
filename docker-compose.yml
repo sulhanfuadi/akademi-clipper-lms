@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  # Akademi Clipper LMS Backend
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: akademi-clipper-app
+    restart: "no"
+    ports:
+      - "3001:3000"
+    env_file:
+      - .env
+    networks:
+      - clipper-network
+    environment:
+      - HOST_PORT=3001
+
+networks:
+  clipper-network:
+    driver: bridge

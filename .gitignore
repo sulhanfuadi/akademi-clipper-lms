@@ -9,6 +9,12 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.docker
+.env.*.local
+*.env
+
+# Docker
+docker-compose.override.yml
 
 # Build outputs
 /.next/
