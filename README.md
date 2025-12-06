@@ -16,6 +16,7 @@ From beginner-friendly mobile editing with **CapCut** to professional-grade work
 - 🔒 **Secure** - JWT authentication with role-based access control
 - 📚 **Type-Safe** - End-to-end type safety with TypeScript and Prisma
 - 🌐 **Production Ready** - Deployed on Vercel with serverless PostgreSQL
+- 🐳 **Docker Support** - Containerized deployment for local development
 - 📖 **Well Documented** - Interactive Swagger UI for API exploration
 - 🎓 **Education Focused** - 18 pre-seeded courses for video editing
 
@@ -46,6 +47,7 @@ From beginner-friendly mobile editing with **CapCut** to professional-grade work
 | **[Prisma ORM](https://www.prisma.io/)**                      | Next-generation TypeScript ORM     | 7.0.x   |
 | **[PostgreSQL](https://www.postgresql.org/)**                 | Relational database                | Latest  |
 | **[Neon](https://neon.tech/)**                                | Serverless Postgres                | Cloud   |
+| **[Docker](https://www.docker.com/)**                         | Container platform                 | Latest  |
 | **[@elysiajs/jwt](https://elysiajs.com/plugins/jwt)**         | JWT authentication plugin          | 1.4.x   |
 | **[@elysiajs/swagger](https://elysiajs.com/plugins/swagger)** | OpenAPI documentation              | 1.3.x   |
 | **[Vercel](https://vercel.com/)**                             | Serverless deployment platform     | Latest  |
@@ -104,6 +106,7 @@ From beginner-friendly mobile editing with **CapCut** to professional-grade work
 - ✅ Database relationships and constraints
 - ✅ Seeded data (21 users, 18 courses, 56+ enrollments)
 - ✅ Deployed on Vercel with Bun runtime
+- ✅ Docker support for local development
 
 ---
 
