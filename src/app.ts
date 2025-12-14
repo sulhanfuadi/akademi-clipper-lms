@@ -1,11 +1,13 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
+import { sentryPlugin } from "./lib/sentry";
 import { authRoutes } from "./routes/auth.routes";
 import { userRoutes } from "./routes/user.routes";
 import { courseRoutes } from "./routes/course.routes";
 import { enrollmentRoutes } from "./routes/enrollment.routes";
 
 export const app = new Elysia()
+  .use(sentryPlugin())
   .use(
     swagger({
       documentation: {
@@ -63,6 +65,18 @@ export const app = new Elysia()
         tags: ["info"],
         summary: "API Info",
         description: "Get API information and documentation link",
+      },
+    }
+  )
+  .get(
+    "/test-error",
+    () => {
+      throw new Error("Ini adalah Test Error Sentry dari Elysia!");
+    },
+    {
+      detail: {
+        tags: ["diagnostics"],
+        summary: "Trigger Sentry test error",
       },
     }
   );
